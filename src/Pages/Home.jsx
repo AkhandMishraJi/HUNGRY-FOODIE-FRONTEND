@@ -5,9 +5,11 @@ import IconPatchCheck from "../Components/Icons/IconPatchCheck";
 import OrderFood from '../assets/Images/orderFood.png'
 import Pickup from '../assets/Images/pickup.png'
 import Enjoy from '../assets/Images/enjoy.png'
+import Layout from "../Layouts/Layout";
 
 function Home() {
     return (
+        <Layout>
         <div>
             {/* Hero Section*/}
             
@@ -170,6 +172,7 @@ Cooked By the Best <br /> Chefs In the World</h2>
             </section>
 
         </div>
+        </Layout>
     )
 }
 

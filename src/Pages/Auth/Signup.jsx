@@ -15,14 +15,14 @@ function SignUp() {
                     <h2 className="mb-5 text-lg font-medium text-gray-900 title:font">SIGN UP</h2>
                     
                     <div className="relative mb-4">
-                        <label htmlFor="firstName" className="text-sm leading-7 text-gray-600">First Name <span className="text-red-500">*</span></label>
+                        <label htmlFor="fullName" className="text-sm leading-7 text-gray-600">Full Name <span className="text-red-500">*</span></label>
                         <input 
                           type="text" 
                           required
                           minLength={5}
-                          placeholder="FIRST NAME"
-                          id='firstName' 
-                          name="firstName" 
+                          placeholder="FULL NAME"
+                          id='fullName' 
+                          name="fullName" 
                           className="w-full px-3 py-1   mt-2 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border border-gray-300 rounded outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200" />
                     </div>
    

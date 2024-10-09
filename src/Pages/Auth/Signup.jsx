@@ -1,6 +1,42 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
+import toast from "react-hot-toast"
 
 function SignUp() {
+    const [signUpState ,setSignUpState] = useState({
+        fullName: '' ,
+        email: '' ,
+        mobileNumber: '' ,
+        password: ''
+    })
+
+    function handleUserInput(e) {
+        const {name , value } = e.target
+        setSignUpState({
+            ...signUpState,
+            [name]: value
+        })
+
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault() //Prevent The Form from reloading after clicking submit button
+        console.log(signUpState);
+        
+        //Adding Form Validation
+        if (!signUpState.email || !signUpState.fullName || !signUpState.mobileNumber || !signUpState.password) {
+            toast.error("Mising Form  Values. Please Fill Out All Values");
+            return
+        }
+        if (signUpState.fullName.length < 2  || signUpState.fullName.length > 100) {
+            toast.error("Name Should Be Atleast 2 Characters Long And Less Than 100 Characters")
+            return
+        }
+        if (signUpState.mobileNumber.length > 10 || signUpState.mobileNumber.length < 10) {
+            toast.error("Mobile Number Should Be 10 Digits Long And It Should Be Only In Number Form")
+        }
+    }
+
     return(
         <>
         
@@ -19,7 +55,8 @@ function SignUp() {
                         <input 
                           type="text" 
                           required
-                          minLength={5}
+                          onChange={handleUserInput}
+                          minLength={2}
                           placeholder="FULL NAME"
                           id='fullName' 
                           name="fullName" 
@@ -31,6 +68,7 @@ function SignUp() {
                         <input 
                           type="email" 
                           required
+                          onChange={handleUserInput}
                           placeholder="username@doamin.com"
                           id='email' 
                           name="email" 
@@ -41,10 +79,11 @@ function SignUp() {
                         <input 
                           type="tel" 
                           required
-                          maxLength={12}
+                          onChange={handleUserInput}
+                          maxLength={10}
                           placeholder="moblieNumber"
                           id='moblieNumber' 
-                          name="moblieNumber" 
+                          name="mobileNumber" 
                           className="w-full px-3 py-1   mt-2 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border border-gray-300 rounded outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200" />
                     </div>
                     <div className="relative mb-4">
@@ -52,12 +91,13 @@ function SignUp() {
                         <input 
                           type="password" 
                           required
+                          onChange={handleUserInput}
                           placeholder="Password"
                           id='password' 
                           name="password" 
                           className="w-full px-3 py-1   mt-2 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border border-gray-300 rounded outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200" />
                     </div>
-                    <button className="w-full px-8 py-2 text-lg text-white bg-yellow-500 border-0 rounded-lg focus:outline-none hover:bg-yellow-600">Create Account </button>
+                    <button onClick={handleFormSubmit} className="w-full px-8 py-2 text-lg text-white bg-yellow-500 border-0 rounded-lg focus:outline-none hover:bg-yellow-600">Create Account </button>
                     <p className="mt-3 text-xs text-gray-500">Already Have An Account? <Link to ="/auth/login" className="text-yellow-500">Login</Link></p>
 
                     </form>

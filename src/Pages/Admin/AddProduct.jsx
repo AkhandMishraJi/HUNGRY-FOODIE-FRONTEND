@@ -1,10 +1,16 @@
 import Layout from "../../Layouts/Layout"
+import BurgerSVG from "../../assets/Images/Burger.svg"
+
 
 function AddProduct() {
     return (
         <Layout>
             <section className="py-12">
-                <div className="max-w-md mx-auto mt-8 bg-white p-7">            
+                <div className="flex items-center justify-center px-5">
+                    <div className="md:w-2/6 ">
+                    <img src={BurgerSVG} alt="BurgerSVG" />
+                    </div>
+                <div className="max-w-md md:w-4/6 mx-auto mt-8 bg-white p-4 ">            
                     <h2 className="mb-4 text-2xl font-semibold">Add Product</h2>
 
                     <form action="">
@@ -90,6 +96,8 @@ function AddProduct() {
                     </form>
 
                 </div>
+                </div>
+               
             </section>   
         </Layout>
     )

@@ -51,7 +51,7 @@ function Home() {
                 
                 <img src={CookingImage} alt="CookingImage"
                  width={500}
-                 className="rounded-lg"
+                 className="rounded-3xl"
                  />
 
                 </div>

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 import React from 'react';
-function LoginPresentation(
-    {handleFormSubmit,handleUserInput}
-) {
+function LoginPresentation( {handleFormSubmit,handleUserInput}) {
     return(
         <>
              <section className="text-gray-600 body-font">

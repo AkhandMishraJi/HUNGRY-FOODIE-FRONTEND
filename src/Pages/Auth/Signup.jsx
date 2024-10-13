@@ -27,7 +27,7 @@ function SignUp() {
 
     }
 
-async    function handleFormSubmit(e) { 
+     async function handleFormSubmit(e) { 
 
         e.preventDefault() //Prevent The Form from reloading after clicking submit button
         console.log(signUpState);
@@ -41,6 +41,11 @@ async    function handleFormSubmit(e) {
             toast.error("Name Should Be Atleast 2 Characters Long And Less Than 100 Characters")
             return
         }
+
+        if (!signUpState.email.includes("@") || !signUpState.email.includes(".")) {
+            toast.error("Invalid Email Address")
+        }
+
         if (signUpState.mobileNumber.length > 10 || signUpState.mobileNumber.length < 10) {
             toast.error("Mobile Number Should Be 10 Digits Long And It Should Be Only In Number Form")
 

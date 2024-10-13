@@ -2,9 +2,10 @@
     import toast from "react-hot-toast"
     import { useDispatch } from "react-redux"
     import { login } from "../../Redux/Slices/AuthSlice"
-    import LoginPresentation from "./LoginPresentation.jsx"
-
+    import LoginPresentation from "../../Pages/Auth/LoginPresentation"
+    import React from 'react';
     function Login() {
+;
 
         const dispatch = useDispatch()
         const [loginData ,setLoginData] = useState({
@@ -34,15 +35,14 @@
                 toast.error("Invalid Email Address")
             }
             const apiResponse = await dispatch(login(loginData))
-            console.log(`Api response : `, apiResponse);
+            console.log("Api response : ", apiResponse);
             
         
         }
 
         return (
-            <LoginPresentation
-        handleFormSubmit={handleFormSubmit} handleUserInput={handleUserInput}
-            />
+        
+            <LoginPresentation handleFormSubmit={handleFormSubmit} handleUserInput={handleUserInput}/>
         )
     } 
 

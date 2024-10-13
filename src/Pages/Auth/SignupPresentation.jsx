@@ -69,7 +69,7 @@ function SignupPresentation({handleFormSubmit , handleUserInput}) {
                           name="password" 
                           className="w-full px-3 py-1   mt-2 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border border-gray-300 rounded outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200" />
                     </div>
-                    <button onClick={handleFormSubmit} className="w-full px-8 py-2 text-lg text-white bg-yellow-500 border-0 rounded-lg focus:outline-none hover:bg-yellow-600">Create Account </button>
+                    <button onClick={handleFormSubmit} className="w-full px-8 py-2 text-lg text-white bg-yellow-500 border-0 rounded-lg focus:outline-none hover:bg-yellow-600" type="submit">Create Account </button>
                     <p className="mt-3 text-xs text-gray-500">Already Have An Account? <Link to ="/auth/login" className="text-yellow-500">Login</Link></p>
 
                     </form>

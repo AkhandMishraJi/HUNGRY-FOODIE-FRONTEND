@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import Layout from "../../Layouts/Layout"
 
 function Denied() {
     const navigate = useNavigate()
    return ( <>
-    
+    <Layout>
     <main className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-r from-amber-50
     to-orange-300">
         <h1 className="font-extrabold tracking-widest text-white text-9xl">403</h1>
@@ -20,7 +21,7 @@ function Denied() {
             </a>
         </button>
     </main>
-
+    </Layout>
     </> ) 
 }
 

@@ -6,13 +6,17 @@ import { logout } from '../Redux/Slices/AuthSlice'
 
 function Layout({children}) {
     const navigate = useNavigate()
-
+    function navigateToAllProducts() {
+        navigate('/products')
+    }
+    
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
 
     async function handleLogout(e){
         e.preventDefault()
         dispatch(logout())
+        navigate('/auth/login')
     }
     // confirm(isLoggedIn)
     return (
@@ -32,7 +36,7 @@ function Layout({children}) {
 
                     <li className="hover:text-[#ff9110]">
                         { '  ' }
-                        <p>Menu {' '}</p>
+                        <p onClick={navigateToAllProducts}>Menu {' '}</p>
                     </li>
                     <li className="hover:text-[#ff9110]">
                         { '  ' }

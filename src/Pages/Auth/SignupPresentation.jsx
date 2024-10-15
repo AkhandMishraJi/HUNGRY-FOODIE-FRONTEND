@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
+import Layout from "../../Layouts/Layout"
 
 function SignupPresentation({handleFormSubmit , handleUserInput}) {
     return(
         <> 
-        
+        <Layout>
         <section className="text-gray-600 body-font">
             <div className="flex flex-wrap items-center h-screen px-10 py-6 mx-auto">
                 <div className="hidden pr-0 lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 md:block">
@@ -75,7 +76,7 @@ function SignupPresentation({handleFormSubmit , handleUserInput}) {
                     </form>
                 </div>
         </section>
-
+        </Layout>
         </>
     )
 }

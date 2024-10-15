@@ -6,13 +6,31 @@ import OrderFood from '../assets/Images/orderFood.png'
 import Pickup from '../assets/Images/pickup.png'
 import Enjoy from '../assets/Images/enjoy.png'
 import Layout from "../Layouts/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllProducts } from "../Redux/Slices/ProductSlice";
+import { Link, useNavigate } from "react-router-dom";
+import Products from "./ProductsData";
+import ProductsData from "./ProductsData";
 
 function Home() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    function navigateToAllProducts() {
+        navigate('/products')
+    }
     
+
+    useEffect(()=>{
+        dispatch(getAllProducts(''))
+    }, [])
+// console.log(productsData);
+
     return (
         <Layout>
         <div>
-            {/* Hero Section*/}
+         
             
             <section className="flex flex-col-reverse items-center justify-center py-5 md:flex-row md:gap-7 bg-gradient-to-r from-amber-50 to-orange-300">
                 <div className="w-4/6 ml-4 text-center md:w-2/6 md:text-left">
@@ -171,7 +189,11 @@ Cooked By the Best <br /> Chefs In the World</h2>
              </div>
 
             </section>
-
+        
+        <div className="flex bg-gradient-to-r from-amber-50 to-orange-300 flex-col">
+            <ProductsData/>
+        <button className="pl-80" onClick={navigateToAllProducts}>See All Products....</button>
+        </div>
         </div>
         </Layout>
     )

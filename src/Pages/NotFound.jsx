@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import Layout from "../Layouts/Layout"
 
 function NotFound() {
     const navigate = useNavigate()
    return ( <>
-    
+    <Layout>
     <main className="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-r from-amber-50
     to-orange-300">
         <h1 className="font-extrabold tracking-widest text-white text-9xl">404</h1>
@@ -19,7 +20,7 @@ function NotFound() {
             </a>
         </button>
     </main>
-
+    </Layout>
     </> ) 
 }
 

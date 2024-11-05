@@ -1,10 +1,10 @@
 import Layout from "../Layouts/Layout";
 import ProductsData from "./ProductsData";
 
-function Products() {
+function AllProducts() {
     return (<Layout>
         <ProductsData/>
     </Layout>)
 }
 
-export default Products
+export default AllProducts

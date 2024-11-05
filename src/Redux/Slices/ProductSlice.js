@@ -24,6 +24,25 @@ export const getAllProducts = createAsyncThunk('/products/getAll' ,  async () =>
 
     }
 })
+export const getProductDetails = createAsyncThunk('/products/getDetails' ,  async (id) => {
+    try {
+        const product = axiosInstance.get(`/products/${id}`)
+        toast.promise(product, {
+            loading: "Fetching The Product From Server",
+            error: "Some Error Occured While Fetching The Product",
+            success: "Successfully Fetched The Product"
+        })
+        const apiResponse = await product
+        return apiResponse
+        console.log(state.u);
+        
+    } catch (error) {
+        console.log(error);
+        toast.error("Some Error Occured While Fetching The Product")
+
+
+    }
+})
 const productSlice = createSlice({
     name: 'product',
     initialState,

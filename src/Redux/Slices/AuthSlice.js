@@ -11,10 +11,7 @@ const initialState = {
 export const createAccount = createAsyncThunk('/auth/createAccount' , async (data) => {
     console.log("Incomming Data To The Thunk" , data);
     try {
-        console.log("HELLO WORLD");
-        
-  
-        
+       
          const response =  axiosInstance.post("/users" , data)
           toast.promise(response,{
             success: (resolvedPromise) => {

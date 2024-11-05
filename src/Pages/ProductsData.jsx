@@ -19,8 +19,8 @@ function ProductsData() {
     
     return (
         product.inStock && (
-    <Link to={`products/${product._id}`}><div className="bg-gradient-to-r from-amber-50 to-orange-300 py-2 px-10 border border-orange-500 items-center hover:text-lg hover:font-bold hover:bg-gradient-to-r hover:from-orange-300 hover:to-amber-50 rounded-3xl  max-w-80  gap-5" key={product._id}>
-    <div><img src={product.productImage} alt={product.productName} width={100} height={100} /></div>
+    <Link to={`/products/${product._id}`}><div className="bg-gradient-to-r from-amber-100 to-orange-300 py-2 px-10 border border-orange-500 items-center hover:text-lg hover:font-bold hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-200 rounded-3xl  max-w-80  gap-5 ease-in-out" key={product._id}>
+    <div><img src={product.productImage} alt={product.productName} width={200} height={200} /></div>
     <div className="text-xl">{product.productName}</div>
     <div><h1 className="text-lg">Description :</h1><p className="text-sm">{product.description}</p></div>
     <div><h1 className="text-lg">Category :</h1><p className="text-sm">{product.category}</p></div>

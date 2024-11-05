@@ -3,13 +3,16 @@ import Pizzalogo from '../assets/Images/pizza1.png'
 import Footer from '../Components/Icons/Footer'
 import { Link, useNavigate } from 'react-router-dom'
 import { logout } from '../Redux/Slices/AuthSlice'
-
+import cartImage from '../assets/Images/cart.svg'
 function Layout({children}) {
+    const {cartsData} = useSelector((state)=>state.cart)
+
     const navigate = useNavigate()
     function navigateToAllProducts() {
         navigate('/products')
     }
-    
+    const role = useSelector((state) => state.auth.role)
+
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
 
@@ -55,8 +58,15 @@ function Layout({children}) {
                              {isLoggedIn ?
                              (<Link onClick={handleLogout}>Logout</Link>):(<Link to={"/auth/login"}>Login</Link>)}
                              </li>
+                             {isLoggedIn &&(
+                                <Link to={'/cart'}><li className='inline'><img src={cartImage} alt="Cart" className='inline'/></li></Link>
+                             )}
+                             <li className="hover:text-[#ff9110]">
+                                {isLoggedIn && role=='ADMIN' ? (<Link to={'/admin/addproduct/'}>Add Product</Link>):(<></>)}
+                             </li>
                     </ul>
                 </div>
+
 
             </nav>
             {children  }

@@ -10,7 +10,7 @@ function ProductsData() {
     useEffect(()=>{
         dispatch(getAllProducts(''))
     }, [])
-    return( <div className=" bg-gradient-to-r from-amber-50 to-orange-300 p-10 gap-1">
+    return( <div className=" bg-gradient-to-r from-amber-50 to-orange-300 p-10 gap-1 mt-10">
         <h1 className="text-5xl pb-10 pl-10">Products : </h1>
         <div className="flex flex-wrap gap-10 justify-center">
             

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axiosInstance from "../../Helpers/axiosInstance"
 import toast from "react-hot-toast"
+import { useDispatch } from "react-redux"
+import { logout } from "./AuthSlice"
 
 const initialState= {
     cartsData:''
@@ -50,6 +52,12 @@ export const getCartDetails = createAsyncThunk('/cart/getDetails', async ()=>{
         const apiResponse = await respose
         return apiResponse
     } catch (error) {
+        console.log(error.response);
+        if (error?.response?.status == 401) {
+            toast.error("Please Login To View Cart!!")
+            const dispatch = useDispatch()
+            dispatch(logout())
+        }
         console.log(error);
         toast.error("Some Error Occured While Fetching Your Cart")
     }

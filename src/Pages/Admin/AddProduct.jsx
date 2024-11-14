@@ -41,7 +41,8 @@ function AddProduct() {
      async function handleFormSubmit(e) { 
     
         e.preventDefault() //Prevent The Form from reloading after clicking submit button
-        
+try {
+            
         //Adding Form Validation
         if (!addProductState.productName || !addProductState.description || !addProductState.price || !addProductState.quantity || !addProductState.category) {
             toast.error("Mising Form  Values. Please Fill Out All Values");
@@ -56,10 +57,15 @@ function AddProduct() {
             const apiResponse = await dispatch(addProduct(addProductState))
         console.log(`Api response : `, apiResponse);
         
-        if (apiResponse.payload.data?.success) {
+        if (apiResponse?.payload?.data?.success) {
             navigate(`/products/${apiResponse.payload.data.data._id}/`)
+        }else{
+            toast.error("Failed To Add Product ❌")
         }
     
+} catch (error) {
+    
+}
     }
 
     return (
@@ -144,7 +150,7 @@ function AddProduct() {
                                         onChange={handleUserInput}
                                             type="number"
                                             name="quantity"
-                                                                                            required
+                                             required
                                             id="quantity"
                                             className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                         />
@@ -167,6 +173,8 @@ function AddProduct() {
                                             <option value="sides">Sides</option>
                                             <option value="food">Food</option>
                                             <option value="pizza">Pizza</option>
+                                            <option value="maincourse">Main Course</option>
+
                                         </select>
                                     </div>
 

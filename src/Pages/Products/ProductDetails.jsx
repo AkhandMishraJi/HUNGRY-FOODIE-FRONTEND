@@ -4,9 +4,11 @@ import { Link, useParams } from "react-router-dom"
 import { getProductDetails } from "../../Redux/Slices/ProductSlice"
 import Layout from "../../Layouts/Layout"
 import { addProductToCart, getCartDetails, removeProductFromCart } from "../../Redux/Slices/CartSlice"
+import CartDetails from "../Cart/CartDetails"
 function ProductDetails() {
     const {productId} = useParams()
     const dispatch = useDispatch()
+    const cart = dispatch(CartDetails)
     const [productDetails , setProductDetails] = useState({})
     async function fetchProductDetails() {
       const details = await dispatch(getProductDetails(productId))
@@ -30,14 +32,22 @@ function ProductDetails() {
             dispatch(getCartDetails())
         }
     }
-    const [isInCart, setIsinCart] = useState(false)
+    console.log(productDetails);
+    
+    const [isInCart, setIsinCart] = useState()
+    function IsProductInCart(){
+        if (cart?.items?.product?._id  == productDetails._id) {
+            setIsinCart(true)
+        }else setIsinCart(false)
+    }
     useEffect( ()=>{
         fetchProductDetails()
+        IsProductInCart()
     },[productId])
     return(
-        <Layout>
-           
-            <div className="flex gap-10 p-10 m-10  border-2 ring-yellow-400 border-yellow-300 rounded-3xl border-spacing-10">
+        <Layout className='absolute'>
+           <div className="relative">
+            <div className="flex gap-10 p-10 m-10  ring-yellow-400 border-yellow-300 rounded-3xl border-spacing-10">
                 <div className="flex justify-center">
                     <img src={productDetails?.productImage} alt={`Product Name: ${productDetails?.productName} Product Description: ${productDetails?.description}`} width={400}/>
                 </div>
@@ -58,7 +68,7 @@ function ProductDetails() {
                   <div>{isInCart ? (<><button onClick={()=>handleRemove(productId)} className="border-2 border-yellow-400 bg-orange-400 rounded-md p-2">Remove From Cart</button><button onClick={()=>handleCart(productId)} className="border-2 border-yellow-400 bg-orange-400 rounded-md p-2">Add To Cart</button></>):(<button onClick={()=>handleCart(productId)} className="border-2 border-yellow-400 bg-orange-400 rounded-md p-2">Add To Cart</button>)}</div>
                 </div>
                 </div>
-            
+                </div>
         </Layout>
         )
 }

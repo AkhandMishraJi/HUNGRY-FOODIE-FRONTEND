@@ -10,6 +10,7 @@ function CartDetails() {
     const dispatch = useDispatch();
     console.log(cartDetails);
  
+console.log("Cartsdata",cartsData);
 
     async function fetchCartDetails() {
         console.log("fetching cart details")
@@ -19,16 +20,22 @@ function CartDetails() {
     }
 
     async function handleRemove(productId) {
-        // Remove product from cart
-        const response = await dispatch(removeProductFromCart(productId));
+        // Remove product from cart  
+          const response = await dispatch(removeProductFromCart(productId));  
+        
+        
+       
         if(response?.payload?.data?.success) {
             console.log("removed successfully")
             dispatch(getCartDetails()); // Fetch cart details and update state
         }
 }
+console.log("Cart Details: " , cartDetails);
+
     useEffect(() => {
         console.log("re-rendering")
         fetchCartDetails();
+
     }, [cartsData?.items?.length]);
 
 
@@ -102,15 +109,15 @@ function CartDetails() {
 
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <dl className="flex items-center justify-between gap-4">
+                      <dl className="flex items-center justify-between gap-4 flex-col ">
                         
                         {
-                            cartDetails?.items.map((item) => {
+                            cartsData?.items.map((item) => {
                                 return (
                                     <dd key={item?.product?._id} className="text-base font-medium ">
                                         {item?.product?.productName} x {item?.quantity}
 
-                                        <p>{item?.product?.price} x {item?.quantity}</p>
+                                        <p>Price: ₹{item?.product?.price} x {item?.quantity} = {item?.product?.price*item?.quantity}</p>
                                     </dd>
                                 )
                             })
@@ -126,7 +133,7 @@ function CartDetails() {
                         ₹
                         {cartDetails?.items.length === 0
                           ? ''
-                          : cartDetails?.items.reduce((acc, item) => acc + item?.quantity*item?.product?.price , 0) }
+                          : cartsData?.items.reduce((acc, item) => acc + item?.quantity*item?.product?.price , 0) }
                       </dd>
                     </dl>
                   </div>

@@ -47,7 +47,7 @@ function Home() {
                     The Pizza App lets you order your favourite pizza from the comfort of your home.
                     Enjoy the best pizza in the town with just a few clicks.
                 </p>
-                <button className="flex items-center px-4 py-2 text-white bg-orange-500 rounded-md hover:bg-orange-600 group">
+                <button className="flex items-center px-4 py-2 text-white bg-orange-500 rounded-md hover:bg-orange-600 group" onClick={()=>{navigate('/products')}}>
                 Order Now {' '}
                 <span className="inline-block ml-3 transition-transform ease-in-out group-hover:translate-x-2">
                     <IconArrowRight/>
@@ -56,7 +56,7 @@ function Home() {
                 </div>
 
                 <div>
-                    <img src={PizzaImage} alt="Pizza" width={550} height={550}/>
+                    <img src={PizzaImage} alt="Pizza" className="" width={550} height={550}/>
                 </div>
 
             </section>
@@ -130,7 +130,7 @@ Cooked By the Best <br /> Chefs In the World</h2>
                  <div className="flex flex-col items-center text-center p-4 md:w-1/3" /**Box 1 */>
                         
                         <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-100 rounded-full">
-                        <img src={OrderFood} alt="Order Food" />
+                        <img src={OrderFood} alt="Order Food" className="animate-cart"/>
                         </div>
 
                         <div className="flex-grow">
@@ -146,7 +146,7 @@ Cooked By the Best <br /> Chefs In the World</h2>
                         <div className="flex flex-col items-center text-center p-4 md:w-1/3" /**Box 2 */>
                         
                         <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-100 rounded-full">
-                        <img src={Pickup} alt="Pickup Food" />
+                        <img src={Pickup} alt="Pickup Food" className="animate-cart"/>
                         </div>
 
                         <div className="flex-grow">
@@ -162,7 +162,7 @@ Cooked By the Best <br /> Chefs In the World</h2>
                         <div className="flex flex-col items-center text-center p-4 md:w-1/3" /**Box 3 */>
                         
                         <div className="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 mb-5 bg-yellow-100 rounded-full">
-                        <img src={Enjoy} alt="Enjoy Food" />
+                        <img src={Enjoy} alt="Enjoy Food" className="animate-cart"/>
                         </div>
 
                         <div className="flex-grow">

@@ -10,7 +10,10 @@ const initialState= {
 
 export const addProductToCart = createAsyncThunk('/cart/addProduct', async (productId)=>{
     try {
-        const response = axiosInstance.post(`/carts/add/${productId}`)
+        const response = axiosInstance.post(`/carts/add/${productId}` ,{
+            withCredentials:true
+        }
+        )
         toast.promise(response, {
             loading: "Adding Product To Your Cart",
             error: "Some Error Occured While Adding Product To Cart",
@@ -27,7 +30,9 @@ export const addProductToCart = createAsyncThunk('/cart/addProduct', async (prod
 
 export const removeProductFromCart = createAsyncThunk('/cart/removeProduct', async (productId)=>{
     try {
-        const respose = axiosInstance.post(`/carts/remove/${productId}`)
+        const respose = axiosInstance.post(`/carts/remove/${productId}` ,{
+            withCredentials:true
+        })
         toast.promise(respose, {
             loading: "Removing Product From Your Cart",
             error: "Some Error Occured While Remove Product From Cart",
@@ -43,7 +48,10 @@ export const removeProductFromCart = createAsyncThunk('/cart/removeProduct', asy
 
 export const getCartDetails = createAsyncThunk('/cart/getDetails', async ()=>{
     try {
-        const respose = axiosInstance.get(`/carts`)
+        const respose = axiosInstance.get(`/carts` ,{
+            withCredentials: true
+        }
+        )
         toast.promise(respose, {
             loading: "Fetching Your Cart",
             error: "Error Occured While Fetching Your Cart",

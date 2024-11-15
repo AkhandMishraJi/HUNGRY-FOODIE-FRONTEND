@@ -8,7 +8,9 @@ const initialState= {
 
 export const placeOrder = createAsyncThunk('/order/placeOrder', async (details)=>{
     try {
-        const response = axiosInstance.post(`/orders` , details)
+        const response = axiosInstance.post(`/orders` , details ,{
+            withCredentials:true
+        })
         toast.promise(response, {
             loading: "Please Wait We Are Placing Your Order !!",
             error: "Some Error Occured While Placing Your Order ❌",

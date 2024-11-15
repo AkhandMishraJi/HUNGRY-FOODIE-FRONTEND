@@ -12,7 +12,9 @@ export const createAccount = createAsyncThunk('/auth/createAccount' , async (dat
     console.log("Incomming Data To The Thunk" , data);
     try {
        
-         const response =  axiosInstance.post("/users" , data)
+         const response =  axiosInstance.post("/users" , data  ,{
+            withCredentials:true
+        })
           toast.promise(response,{
             success: (resolvedPromise) => {
                 return resolvedPromise?.data.message
@@ -30,7 +32,9 @@ export const createAccount = createAsyncThunk('/auth/createAccount' , async (dat
 export const login = createAsyncThunk('/auth/login' , async (data) => {
     console.log("Incomming Data To The Thunk" , data);
     try {
-         const response =  axiosInstance.post("/auth/login" , data)
+         const response =  axiosInstance.post("/auth/login" , data ,{
+            withCredentials:true
+        })
           toast.promise(response,{
             success: (resolvedPromise) => {
                 return resolvedPromise?.data.message
@@ -48,7 +52,9 @@ export const logout = createAsyncThunk('/auth/logout' , async () => {
     try {
         console.log("Logout ");
         
-         const response =  axiosInstance.post("/auth/logout" )
+         const response =  axiosInstance.post("/auth/logout" ,{
+            withCredentials:true
+        } )
           toast.promise(response,{
             success: (resolvedPromise) => {
                 return resolvedPromise?.data.message

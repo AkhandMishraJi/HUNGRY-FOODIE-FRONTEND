@@ -14,7 +14,10 @@ export const addProduct = createAsyncThunk('/admin/addProduct',  async (data) =>
         formData.append("quantity" , data.quantity)
         formData.append("productImage" , data.productImage)
     
-        const response =  axiosInstance.post('/products/addproduct', formData, { headers: { 'Content-Type': 'multipart/form-data' } }); // Await here
+        const response =  axiosInstance.post('/products/addproduct', formData, {
+             headers: { 'Content-Type': 'multipart/form-data' } ,
+             withCredentials: true
+            }); // Await here
         toast.promise(response, {
             success: (resolvedPromise) => {
                 return resolvedPromise?.data.message;
